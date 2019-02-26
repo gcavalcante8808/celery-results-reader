@@ -5,6 +5,7 @@ volumes:
 services:
   app:
     build: .
+    command: ["python3","app.py"]
     environment:
       - RESULT_BACKEND_URL=redis://cache:6379/0
       - BROKER_URL=redis://cache:6379/0
