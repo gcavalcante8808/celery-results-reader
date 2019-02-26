@@ -36,11 +36,12 @@ You can run the tests through the following commands:
 ## Caveats
 
 
-Only tested against Celery 3 and Redis as Result Backend.
+ * Only tested against Celery 3 and Redis as Result Backend;
 
 ## RoadMap
 
  * Test against other result backends;
  * Use Tox to run tests;
  * User Interface;
+ * Add Log Middleware for Bjoern.
  
