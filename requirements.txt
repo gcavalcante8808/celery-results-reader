@@ -4,3 +4,4 @@ kombu<4
 redis<3
 pytest
 werkzeug
+bjoern
