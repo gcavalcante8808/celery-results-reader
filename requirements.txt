@@ -1,0 +1,6 @@
+falcon
+celery[redis]==3.1.25
+kombu<4
+redis<3
+pytest
+werkzeug
