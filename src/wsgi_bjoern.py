@@ -3,7 +3,7 @@ import signal
 
 import bjoern
 
-from src.app import app
+from app import app
 
 NUM_WORKERS = 8
 worker_pids = []
