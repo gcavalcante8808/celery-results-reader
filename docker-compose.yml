@@ -1,6 +1,4 @@
 version: '2'
-volumes:
-  redis-data:
 
 services:
   cache:
@@ -9,25 +7,9 @@ services:
       - redis-data:/data
 
   app:
-    image: celery-results-web
-    build: .
-    command: ["python3","app.py"]
+    image: gcavalcante8808/celery-results-reader
     environment:
-      - RESULT_BACKEND_URL=redis://cache:6379/0
-      - BROKER_URL=redis://cache:6379/0
-    volumes:
-      - ./src:/usr/src
+      - RESULT_BACKEND_URL
+      - BROKER_URL
     ports:
       - 5000:5000
-
-  celery:
-    image: celery-results-web
-    build: .
-    user: nobody
-    tty: true
-    environment:
-      - RESULT_BACKEND_URL=redis://cache:6379/0
-      - BROKER_URL=redis://cache:6379/0
-    command: ["celery", "-A", "tasks","worker","--loglevel=info"]
-    volumes:
-      - ./src:/usr/src

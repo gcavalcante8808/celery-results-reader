@@ -1,0 +1,23 @@
+version: '2'
+volumes:
+  redis-data:
+
+services:
+  app:
+    build: .
+    environment:
+      - RESULT_BACKEND_URL=redis://cache:6379/0
+      - BROKER_URL=redis://cache:6379/0
+    volumes:
+      - ./src:/usr/src
+
+  celery:
+    image: gcavalcante8808/celery-results-reader
+    build: .
+    volumes:
+      - ./src:/usr/src
+
+    environment:
+      - RESULT_BACKEND_URL=redis://cache:6379/0
+      - BROKER_URL=redis://cache:6379/0
+    command: ["celery", "-A", "tasks","worker","--loglevel=info"]
