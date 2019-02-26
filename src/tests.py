@@ -1,13 +1,12 @@
+import os
+from time import sleep
+
+import falcon
+import pytest
 from falcon import testing
+
 from src.app import app
 from src.tasks import add
-from celery.result import AsyncResult
-
-from time import sleep
-import pytest
-import uuid
-import falcon
-import os
 
 RESULT_BACKEND_URL = os.getenv("BROKER_URL")
 
