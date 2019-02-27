@@ -18,3 +18,5 @@ coverage.xml
 *.log
 .git
 docker-compose.yml
+.vscode/
+frontend/
